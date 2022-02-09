@@ -8,29 +8,13 @@ import {
 } from "@material-ui/core";
 import React, { useState } from "react";
 import Places from "../Places/Places";
+
 import useStyles from "./styles";
-function List() {
+function List({PlaceList}) {
   const classes = useStyles();
   const [type, setType] = useState("restaurants");
   const [rating, setRating] = useState("");
-  const places = [
-    { name: "Cool Place" },
-    { name: "Cool Place" },
-    { name: "Cool Place" },
-    { name: "Cool Place" },
-    { name: "Cool Place" },
-    { name: "Cool Place" },
-    { name: "Cool Place" },
-    { name: "Cool Place" },
-    { name: "Cool Place" },
-    { name: "Cool Place" },
-    { name: "Cool Place" },
-    { name: "Cool Place" },
-    { name: "Cool Place" },
-    { name: "Cool Place" },
-    { name: "Cool Place" },
-    { name: "Cool Place" },
-  ];
+ 
   return (
     <div className={classes.container}>
       <Typography variant="h4">
@@ -55,7 +39,7 @@ function List() {
         </Select>
       </FormControl>
       <Grid container spacing={3} className={classes.list}>
-        {places?.map((place, i) => (
+        {PlaceList?.map((place, i) => (
           <Grid item key={i} xs={12}>
           <Places place={place} />
           </Grid>
