@@ -2,7 +2,7 @@ import React from 'react'
 
 function Places({place}) {
   return (
-    <div>{place.name}</div>
+    <h1>{place.name}</h1>
   )
 }
 

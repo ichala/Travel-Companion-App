@@ -20,6 +20,16 @@ function List() {
     { name: "Cool Place" },
     { name: "Cool Place" },
     { name: "Cool Place" },
+    { name: "Cool Place" },
+    { name: "Cool Place" },
+    { name: "Cool Place" },
+    { name: "Cool Place" },
+    { name: "Cool Place" },
+    { name: "Cool Place" },
+    { name: "Cool Place" },
+    { name: "Cool Place" },
+    { name: "Cool Place" },
+    { name: "Cool Place" },
   ];
   return (
     <div className={classes.container}>
