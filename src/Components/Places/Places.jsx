@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Places() {
+function Places({place}) {
   return (
-    <div>Places</div>
+    <div>{place.name}</div>
   )
 }
 
