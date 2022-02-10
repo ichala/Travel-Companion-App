@@ -10,11 +10,11 @@ import React, { useState } from "react";
 import Places from "../Places/Places";
 
 import useStyles from "./styles";
-function List({PlaceList}) {
+function List({ PlaceList }) {
   const classes = useStyles();
   const [type, setType] = useState("restaurants");
   const [rating, setRating] = useState("");
- 
+
   return (
     <div className={classes.container}>
       <Typography variant="h4">
@@ -39,11 +39,14 @@ function List({PlaceList}) {
         </Select>
       </FormControl>
       <Grid container spacing={3} className={classes.list}>
-        {PlaceList?.map((place, i) => (
-          <Grid item key={i} xs={12}>
-          <Places place={place} />
-          </Grid>
-        ))}
+        {PlaceList?.map(
+          (place, i) =>
+            place.name && (
+              <Grid item key={i} xs={12}>
+                <Places place={place} />
+              </Grid>
+            )
+        )}
       </Grid>
     </div>
   );
