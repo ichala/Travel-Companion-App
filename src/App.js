@@ -8,7 +8,7 @@ import { CssBaseline, Grid } from "@material-ui/core";
 import { getPlacesData, getWeatherData } from "./Api/ApiCalls";
 function App() {
   const [places, SetPlaces] = useState([]);
-  const [coordinates, setCoordinates] = useState({});
+  const [coordinates, setCoordinates] = useState({lat: 1, lng: 1});
   const [bounds, SetBounds] = useState({});
   const [childClicked, setChildClicked] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
