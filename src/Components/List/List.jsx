@@ -11,10 +11,9 @@ import React, { createRef, useEffect, useState } from "react";
 import Places from "../Places/Places";
 
 import useStyles from "./styles";
-function List({ PlaceList, childClicked, isLoading }) {
+function List({ PlaceList,type, setType, rating, setRating, childClicked, isLoading }) {
  
-  const [type, setType] = useState("restaurants");
-  const [rating, setRating] = useState("");
+ 
   const [elRefs, setElRefs] = useState([]);
   const classes = useStyles();
 
@@ -41,7 +40,7 @@ function List({ PlaceList, childClicked, isLoading }) {
         <Select value={type} onChange={(e) => setType(e.target.value)}>
           <MenuItem value="restaurants">Restaurants</MenuItem>
           <MenuItem value="hotels">Hotels</MenuItem>
-          <MenuItem value="leisures">Leisures</MenuItem>
+          <MenuItem value="attractions">Leisures</MenuItem>
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>
