@@ -47,7 +47,7 @@ function List({ PlaceList,type, setType, rating, setRating, childClicked, isLoad
         <InputLabel>Rating</InputLabel>
         <Select value={rating} onChange={(e) => setRating(e.target.value)}>
           <MenuItem value={0}>All</MenuItem>
-          <MenuItem value={3}>Above 3.0</MenuItem>
+          <MenuItem value={3}><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> +</MenuItem>
           <MenuItem value={4}>Above 4.0</MenuItem>
           <MenuItem value={4.5}>Above 4.5</MenuItem>
         </Select>

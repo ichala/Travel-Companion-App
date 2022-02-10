@@ -15,7 +15,7 @@ function App() {
   const [type, setType] = useState("restaurants");
   const [autocomplete, setAutocomplete] = useState(null);
   const [weatherData, setWeatherData] = useState([]);
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(0);
   const [filteredPlaces, setFilteredPlaces] = useState([]);
   const onLoad = (autoC) => setAutocomplete(autoC);
 
