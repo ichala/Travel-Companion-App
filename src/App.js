@@ -5,7 +5,7 @@ import List from "./Components/List/List";
 import Map from "./Components/Map/Map";
 import Places from "./Components/Places/Places";
 import { CssBaseline, Grid } from "@material-ui/core";
-import { getPlacesData } from "./Api/ApiCalls";
+import { getPlacesData, getWeatherData } from "./Api/ApiCalls";
 function App() {
   const [places, SetPlaces] = useState([]);
   const [coordinates, setCoordinates] = useState({});
@@ -40,7 +40,8 @@ function App() {
   useEffect(() => {
     if(bounds.sw && bounds.ne){
     setIsLoading(true)
-   
+    getWeatherData(coordinates.lat, coordinates.lng)
+        .then((data) => setWeatherData(data));
     getPlacesData(type,bounds.sw,bounds.ne).then((data) => {
       setFilteredPlaces([]);
       setRating('');
@@ -70,6 +71,7 @@ function App() {
             SetBounds={SetBounds}
             coordinates={coordinates}
             places ={filteredPlaces.length ? filteredPlaces : places}
+            weatherData={weatherData}
           />
         </Grid>
       </Grid>

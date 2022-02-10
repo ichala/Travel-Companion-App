@@ -11,7 +11,7 @@ export default makeStyles((theme) => ({
     height: '600px', display: 'flex', justifyContent: 'center', alignItems: 'center',
   },
   container: {
-    padding: '25px',
+    minHeight:'90vh',padding: '25px',
   },
   marginBottom: {
     marginBottom: '30px',
