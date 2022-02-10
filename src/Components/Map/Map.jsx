@@ -8,11 +8,11 @@ import mapStyles from './mapStyles';
 function Map({setCoordinates,SetBounds,coordinates,places ,setChildClicked, weatherData}) {
   const classes = useStyles();
   const isMobile = useMediaQuery("(min-width:650px)");
-  console.log({weatherData});
+
   return (
     <div className={classes.mapContainer}>
     <GoogleMapReact
-      bootstrapURLKeys={{ key: "AIzaSyCu-xEUxGhsKMZE-7Zya46V2lNVl50OrbQ" }}
+      bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
       defaultCenter={coordinates}
       center={coordinates}
       defaultZoom={14}
@@ -46,7 +46,7 @@ function Map({setCoordinates,SetBounds,coordinates,places ,setChildClicked, weat
     ))}
        {weatherData?.list?.length && weatherData.list.map((data, i) => (
           <div key={i} lat={data.coord.lat} lng={data.coord.lon}>
-            <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} height="70px" /><Chip size="small" label={"Temp: "+data.main.temp} ></Chip>
+            <img height={100} src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} height="70px" /><Chip size="small" label={"Temp: "+data.main.temp} ></Chip>
           </div>
         ))}
     </GoogleMapReact></div>

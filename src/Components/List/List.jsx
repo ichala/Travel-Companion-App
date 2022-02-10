@@ -56,8 +56,8 @@ function List({ PlaceList,type, setType, rating, setRating, childClicked, isLoad
         {PlaceList?.map(
           (place, i) =>
             place.name && (
-              <Grid ref={elRefs[i]} item key={i} xs={12}>
-                <Places selected={Number(childClicked) === i} refProp={elRefs[i]} place={place} />
+              <Grid key={i} ref={elRefs[i]} item  xs={12}>
+                <Places key={i} selected={Number(childClicked) === i} refProp={elRefs[i]} place={place} />
               </Grid>
             )
         )}
