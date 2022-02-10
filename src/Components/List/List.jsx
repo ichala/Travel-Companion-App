@@ -1,4 +1,5 @@
 import {
+  CircularProgress,
   FormControl,
   Grid,
   InputLabel,
@@ -6,14 +7,22 @@ import {
   Select,
   Typography,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { createRef, useEffect, useState } from "react";
 import Places from "../Places/Places";
 
 import useStyles from "./styles";
-function List({ PlaceList }) {
-  const classes = useStyles();
+function List({ PlaceList, childClicked, isLoading }) {
+ 
   const [type, setType] = useState("restaurants");
   const [rating, setRating] = useState("");
+  const [elRefs, setElRefs] = useState([]);
+  const classes = useStyles();
+
+  useEffect(() => {
+   const refs = Array(PlaceList?.length).fill().map((_, i) => elRefs[i] || createRef());
+     setElRefs(refs);
+  }, [PlaceList]);
+
 
   return (
     <div className={classes.container}>
@@ -21,6 +30,12 @@ function List({ PlaceList }) {
         {" "}
         Nearby Hotels , Restaurants & Leisures ..{" "}
       </Typography>
+      {isLoading ? (
+        <div className={classes.loading}>
+          <CircularProgress size="5rem" />
+        </div>
+      ) : (
+        <>
       <FormControl className={classes.formControl}>
         <InputLabel>Type</InputLabel>
         <Select value={type} onChange={(e) => setType(e.target.value)}>
@@ -42,12 +57,14 @@ function List({ PlaceList }) {
         {PlaceList?.map(
           (place, i) =>
             place.name && (
-              <Grid item key={i} xs={12}>
-                <Places place={place} />
+              <Grid ref={elRefs[i]} item key={i} xs={12}>
+                <Places selected={Number(childClicked) === i} refProp={elRefs[i]} place={place} />
               </Grid>
             )
         )}
       </Grid>
+        </>
+        )}
     </div>
   );
 }
