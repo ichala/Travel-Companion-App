@@ -30,7 +30,7 @@ function List({ PlaceList,type, setType, rating, setRating, childClicked, isLoad
         {" "}
         Nearby Hotels , Restaurants & Leisures ..{" "}
       </Typography>
-      {!isLoading ? (
+      {isLoading ? (
         <div className={classes.loading}>
           <CircularProgress size="5rem" />
         </div>
