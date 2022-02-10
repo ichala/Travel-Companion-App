@@ -13,8 +13,18 @@ function App() {
   const [childClicked, setChildClicked] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [type, setType] = useState("restaurants");
+  const [autocomplete, setAutocomplete] = useState(null);
+  const [weatherData, setWeatherData] = useState([]);
   const [rating, setRating] = useState("");
   const [filteredPlaces, setFilteredPlaces] = useState([]);
+  const onLoad = (autoC) => setAutocomplete(autoC);
+
+  const onPlaceChanged = () => {
+    const lat = autocomplete.getPlace().geometry.location.lat();
+    const lng = autocomplete.getPlace().geometry.location.lng();
+
+    setCoordinates({ lat, lng });
+  };
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
@@ -28,19 +38,20 @@ function App() {
     setFilteredPlaces(filtered);
   }, [rating]);
   useEffect(() => {
+    if(bounds.sw && bounds.ne){
     setIsLoading(true)
-    console.log(coordinates, bounds);
+   
     getPlacesData(type,bounds.sw,bounds.ne).then((data) => {
       setFilteredPlaces([]);
       setRating('');
-      SetPlaces(data);
+      SetPlaces(data.filter((place) => place.name && place.num_reviews > 0));
       setIsLoading(false)
-    });
-  }, [type,coordinates, bounds]);
+    });}
+  }, [type, bounds]);
   return (
     <div className="App">
       <CssBaseline />
-      <Header />
+      <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad}/>
       <Grid container spacing={3} style={{ width: "100%" }}>
         <Grid item xs={12} md={4}>
           <List PlaceList={filteredPlaces.length ? filteredPlaces : places}
