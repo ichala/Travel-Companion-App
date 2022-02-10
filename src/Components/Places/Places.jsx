@@ -10,9 +10,10 @@ function Places({place, selected, refProp}) {
   const classes = useStyles();
   if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   return (
-     <Card elevation={6}>
+
+     <Card elevation={6} sx={{ maxWidth: "100%", m: 2 }}>
       <CardMedia
-        style={{ height: 350 }}
+        style={{ height: 190 }}
         image={place.photo ? place.photo.images.large.url : 'https://tacm.com/wp-content/uploads/2018/01/no-image-available.jpeg'}
         title={place.name}
       />

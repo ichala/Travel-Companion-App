@@ -4,7 +4,7 @@ import Header from "./Components/Header/Header";
 import List from "./Components/List/List";
 import Map from "./Components/Map/Map";
 import Places from "./Components/Places/Places";
-import { CssBaseline, Grid } from "@material-ui/core";
+import { CssBaseline, Grid,CircularProgress, Typography, } from "@material-ui/core";
 import { getPlacesData, getWeatherData } from "./Api/ApiCalls";
 function App() {
   const [places, SetPlaces] = useState([]);
@@ -17,6 +17,7 @@ function App() {
   const [weatherData, setWeatherData] = useState([]);
   const [rating, setRating] = useState(0);
   const [filteredPlaces, setFilteredPlaces] = useState([]);
+  const [firstloading, setfirstloading] = useState(true)
   const onLoad = (autoC) => setAutocomplete(autoC);
 
   const onPlaceChanged = () => {
@@ -46,14 +47,18 @@ function App() {
       setFilteredPlaces([]);
       setRating('');
       SetPlaces(data.filter((place) => place.name && place.num_reviews > 0));
+      setfirstloading(false)
       setIsLoading(false)
+      
     });}
   }, [type, bounds]);
+
   return (
     <div className="App">
+      {firstloading && <div className="firstloading"><div  className="LoadingCircle"><CircularProgress size="5rem" style={{color:'white'}} /></div></div>}
       <CssBaseline />
       <Header onPlaceChanged={onPlaceChanged} onLoad={onLoad}/>
-      <Grid container spacing={3} style={{ width: "100%" }}>
+      <Grid container  style={{ width: "100%",height:"100%" }}>
         <Grid item xs={12} md={4}>
           <List PlaceList={filteredPlaces.length ? filteredPlaces : places}
            isLoading={isLoading}
@@ -62,6 +67,18 @@ function App() {
             setType={setType}
             rating={rating}
             setRating={setRating}
+            sx={{
+              "&::-webkit-scrollbar": {
+              width: 20
+              },
+              "&::-webkit-scrollbar-track": {
+              backgroundColor: "orange"
+              },
+              "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "red",
+              borderRadius: 2
+              }
+            }}
           />
         </Grid>
         <Grid item xs={12} md={8}>

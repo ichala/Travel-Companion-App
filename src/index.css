@@ -1,13 +1,37 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  font-family: 'Montserrat', sans-serif !important;
+
+}
+::-webkit-scrollbar {
+  display: none;
+}
+body{
+  background: rgb(2,53,60) !important;
+background: linear-gradient(0deg, #2b2b2b 17%, #2b2b2b 100%) !important;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.example::-webkit-scrollbar {
+  display: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
+.firstloading {
+  z-index: 10000;
+  background:#02353C;
+  position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  height: 100%;
+}
+.LoadingCircle{ position: absolute;
+  top: 30%;
+  left: 50%;
+  
+width: 150px;
+  height: 150px;	}
