@@ -35,7 +35,7 @@ function List({ PlaceList,type, setType, rating, setRating, childClicked, isLoad
       </Typography>
       <FormControl className={classes.formControl}>
         <InputLabel style={{color:'white'}}>Type</InputLabel>
-        <Select style={{color:'white'}} value={type} onChange={(e) => setType(e.target.value)}>
+        <Select style={{color:'white' }} value={type} onChange={(e) => setType(e.target.value)}>
           <MenuItem value="restaurants">Restaurants</MenuItem>
           <MenuItem value="hotels">Hotels</MenuItem>
           <MenuItem value="attractions">Leisures</MenuItem>
