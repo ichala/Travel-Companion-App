@@ -9,7 +9,8 @@ import {
 } from "@material-ui/core";
 import React, { createRef, useEffect, useState } from "react";
 import Places from "../Places/Places";
-
+import StarIcon from '@material-ui/icons/Star';
+import StarHalfIcon from '@material-ui/icons/StarHalf';
 import useStyles from "./styles";
 function List({ PlaceList,type, setType, rating, setRating, childClicked, isLoading }) {
  
@@ -29,7 +30,7 @@ function List({ PlaceList,type, setType, rating, setRating, childClicked, isLoad
         {" "}
         Nearby Hotels , Restaurants & Leisures ..{" "}
       </Typography>
-      {isLoading ? (
+      {!isLoading ? (
         <div className={classes.loading}>
           <CircularProgress size="5rem" />
         </div>
@@ -47,9 +48,9 @@ function List({ PlaceList,type, setType, rating, setRating, childClicked, isLoad
         <InputLabel>Rating</InputLabel>
         <Select value={rating} onChange={(e) => setRating(e.target.value)}>
           <MenuItem value={0}>All</MenuItem>
-          <MenuItem value={3}><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> +</MenuItem>
-          <MenuItem value={4}>Above 4.0</MenuItem>
-          <MenuItem value={4.5}>Above 4.5</MenuItem>
+          <MenuItem value={3}><StarIcon fontSize="small" color="secondary" /><StarIcon  fontSize="small" color="secondary" /><StarIcon fontSize="small" color="secondary" />+</MenuItem>
+          <MenuItem value={4}><StarIcon fontSize="small" color="secondary" /><StarIcon fontSize="small" color="secondary" /><StarIcon fontSize="small" color="secondary" /><StarIcon fontSize="small" color="secondary" />+</MenuItem>
+          <MenuItem value={4.5}><StarIcon fontSize="small" color="secondary" /><StarIcon fontSize="small" color="secondary" /><StarIcon fontSize="small" color="secondary" /><StarIcon fontSize="small" color="secondary" /><StarHalfIcon fontSize="small"color="secondary" />+</MenuItem>
         </Select>
       </FormControl>
       <Grid container spacing={3} className={classes.list}>
